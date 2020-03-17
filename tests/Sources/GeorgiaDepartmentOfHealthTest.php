@@ -2,25 +2,24 @@
 
 namespace GuillermoandraeTest\Coronavirus\Sources;
 
-use Guillermoandrae\Coronavirus\Contracts\SourceInterface;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
-use PHPUnit\Framework\TestCase;
+use GuillermoandraeTest\Coronavirus\SourceTestCase;
 
-final class GeorgiaDepartmentOfHealthTest extends TestCase
+final class GeorgiaDepartmentOfHealthTest extends SourceTestCase
 {
-    private $source;
-
-    public function testGetData()
+    public function testGetNumConfirmedCases()
     {
-        $path = 'cache/' . md5(GeorgiaDepartmentOfHealth::class) . '.cache';
         $this->assertSame(404, $this->source->getNumConfirmedCases());
-        $this->assertSame(file_get_contents($path), file_get_contents($this->source->getUrl()));
-        touch($path, time() - (SourceInterface::CACHE_LIFETIME + 1));
-        $this->assertSame(404, $this->source->getNumConfirmedCases());
+    }
+
+    public function testGetLastModified()
+    {
+        $this->assertEquals('11:34', date('h:i', $this->source->getLastModified()));
     }
 
     protected function setUp(): void
     {
+        parent::setUp();
         $this->source = new GeorgiaDepartmentOfHealth('', 'tests/Fixtures/ga.html');
     }
 }

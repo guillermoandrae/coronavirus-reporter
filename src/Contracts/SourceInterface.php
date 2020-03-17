@@ -36,4 +36,11 @@ interface SourceInterface
      * @return int  Number of confirmed cases in the state.
      */
     public function getNumConfirmedCases(): int;
+
+    /**
+     * Returns the timestamp for the last time the data was modified.
+     *
+     * @return int  Time the data was last modified.
+     */
+    public function getLastModified(): int;
 }

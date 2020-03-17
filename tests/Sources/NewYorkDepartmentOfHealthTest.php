@@ -3,19 +3,23 @@
 namespace GuillermoandraeTest\Coronavirus\Sources;
 
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
-use PHPUnit\Framework\TestCase;
+use GuillermoandraeTest\Coronavirus\SourceTestCase;
 
-final class NewYorkDepartmentOfHealthTest extends TestCase
+final class NewYorkDepartmentOfHealthTest extends SourceTestCase
 {
-    private $source;
-
     public function testGetNumConfirmedCases()
     {
-        $this->assertStringContainsString(718, $this->source->getNumConfirmedCases());
+        $this->assertStringContainsString(7180, $this->source->getNumConfirmedCases());
+    }
+
+    public function testGetLastModified()
+    {
+        $this->assertEquals('02:03', date('h:i', $this->source->getLastModified()));
     }
 
     protected function setUp(): void
     {
+        parent::setUp();
         $this->source = new NewYorkDepartmentOfHealth('', 'tests/Fixtures/ny.html');
     }
 }

@@ -13,23 +13,42 @@ final class Reporter
      */
     private $sourceAggregator;
 
+    /**
+     * Reporter constructor.
+     *
+     * @param SourceAggregatorInterface $sourceAggregator The SourceAggregator.
+     */
     public function __construct(SourceAggregatorInterface $sourceAggregator)
     {
         $this->sourceAggregator = $sourceAggregator;
     }
 
+    /**
+     * Returns the SourceAggregator.
+     *
+     * @return SourceAggregatorInterface
+     */
     public function getSourceAggregator(): SourceAggregatorInterface
     {
         return $this->sourceAggregator;
     }
 
+    /**
+     * Prints case information from each source.
+     */
     public function execute()
     {
         $sources = $this->getSourceAggregator()->getSources();
         foreach ($sources as $source) {
             $state = $source->getState();
             $number = $source->getNumConfirmedCases();
-            printf('Number of confirmed cases in %s: %d' . PHP_EOL, $state, $number);
+            $timestamp = $source->getLastModified();
+            printf(
+                'Number of confirmed cases in %s: %d (as of %s)' . PHP_EOL,
+                $state,
+                $number,
+                date('F d, Y \a\t h:i A', $timestamp)
+            );
         }
     }
 }

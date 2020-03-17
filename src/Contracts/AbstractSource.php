@@ -34,7 +34,8 @@ abstract class AbstractSource implements SourceInterface
     {
         $key = md5(get_called_class());
         $path = sprintf('cache/%s.cache', $key);
-        if (file_exists($path) && (filemtime($path) < SourceInterface::CACHE_LIFETIME)) {
+        $age = time() - filemtime(realpath($path));
+        if (file_exists($path) && $age < SourceInterface::CACHE_LIFETIME) {
             return file_get_contents($path);
         } else {
             $data = file_get_contents($this->getUrl());
