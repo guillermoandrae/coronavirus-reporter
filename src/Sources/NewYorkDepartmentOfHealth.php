@@ -18,6 +18,6 @@ final class NewYorkDepartmentOfHealth extends AbstractSource
         $limit = strpos(substr($page, $start), '</tr>');
         $segment = trim(substr($page, $start, $limit));
         preg_match('/\<td\>(.*)\<\/td\>/', $segment, $matches);
-        return $matches[1];
+        return (int) str_replace(',', '', $matches[1]);
     }
 }
