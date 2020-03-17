@@ -10,6 +10,12 @@ Do this, then relax (if you can!!!!!):
 composer install guillermoandrae/coronavirus-reporter
 ```
 
+## Getting Started
+You can run this locally:
+```
+php ./bin/covid-19.php
+```
+
 ## Testing
 Run the following command to make sure your code is appropriately styled:
 ```
