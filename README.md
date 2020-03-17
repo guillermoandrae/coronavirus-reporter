@@ -1,13 +1,13 @@
 # PHP Skeleton
-[![Travis](https://img.shields.io/travis/guillermoandrae/php-skeleton.svg?style=flat-square)](https://travis-ci.org/guillermoandrae/php-skeleton) [![Scrutinizer](https://img.shields.io/scrutinizer/g/guillermoandrae/php-skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/guillermoandrae/php-skeleton/) [![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/guillermoandrae/php-skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/guillermoandrae/php-skeleton/) [![PHP from Travis config](https://img.shields.io/travis/php-v/guillermoandrae/php-skeleton.svg?style=flat-square)](https://travis-ci.org/guillermoandrae/php-skeleton)
+[![Travis](https://img.shields.io/travis/guillermoandrae/coronavirus-reporter.svg?style=flat-square)](https://travis-ci.org/guillermoandrae/coronavirus-reporter) [![Scrutinizer](https://img.shields.io/scrutinizer/g/guillermoandrae/coronavirus-reporter.svg?style=flat-square)](https://scrutinizer-ci.com/g/guillermoandrae/coronavirus-reporter/) [![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/guillermoandrae/coronavirus-reporter.svg?style=flat-square)](https://scrutinizer-ci.com/g/guillermoandrae/coronavirus-reporter/) [![PHP from Travis config](https://img.shields.io/travis/php-v/guillermoandrae/coronavirus-reporter.svg?style=flat-square)](https://travis-ci.org/guillermoandrae/coronavirus-reporter)
  [![@guillermoandrae on Twitter](http://img.shields.io/badge/twitter-%40guillermoandrae-blue.svg?style=flat-square)](https://twitter.com/guillermoandrae)
 
-This project provides a skeleton that can be used to spin up PHP projects. 
+This project provides data about the number of confirmed COVID-19 cases in select states. 
 
 ## Installation
-Do this, then relax:
+Do this, then relax (if you can!!!!!):
 ```
-composer create-project guillermoandrae/php-skeleton [project name]
+composer install guillermoandrae/coronavirus-reporter
 ```
 
 ## Testing

@@ -1,14 +1,15 @@
 {
-    "name": "guillermoandrae/php-skeleton",
+    "name": "guillermoandrae/coronavirus-reporter",
     "description": "Skeleton for PHP projects",
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "icanboogie/inflector": "^1.5"
+        "ext-dom": "*",
+        "aws/aws-sdk-php": "^3.95"
     },
     "autoload": {
         "psr-4": {
-            "Guillermoandrae\\": "src/"
+            "Guillermoandrae\\Coronavirus\\": "src/"
         }
     },
     "require-dev": {
@@ -17,7 +18,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "GuillermoandraeTest\\": "tests/"
+            "GuillermoandraeTest\\Coronavirus\\": "tests/"
         }
     },
     "scripts": {
