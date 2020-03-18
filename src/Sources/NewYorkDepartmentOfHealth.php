@@ -13,7 +13,7 @@ final class NewYorkDepartmentOfHealth extends AbstractSource
     public function getNumConfirmedCases(): int
     {
         $page = $this->getData();
-        preg_match('/The are (.*) confirmed positive cases in New York/', $page, $matches);
+        preg_match('/statewide total to (.*) cases/', $page, $matches);
         return (int) str_replace(',', '', $matches[1]);
     }
 
