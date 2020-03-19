@@ -2,8 +2,6 @@
 
 namespace Guillermoandrae\Coronavirus\Contracts;
 
-use Guillermoandrae\Coronavirus\DynamoDbAdapter;
-
 abstract class AbstractSource implements SourceInterface
 {
     protected $url = '';
