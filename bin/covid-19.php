@@ -1,4 +1,6 @@
-<?php require 'vendor/autoload.php';
+<?php declare(strict_types = 1);
+
+require 'vendor/autoload.php';
 
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -12,6 +14,7 @@ use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
 $filesystemAdapter = new Local(realpath('.'));
 $filesystem = new Filesystem($filesystemAdapter);
 $cacheItemPool = new FilesystemCachePool($filesystem);
+
 $aggregator = new SourceAggregator($cacheItemPool);
 $aggregator->addSource(new NewYorkDepartmentOfHealth());
 $aggregator->addSource(new PennsylvaniaDepartmentOfHealth());
