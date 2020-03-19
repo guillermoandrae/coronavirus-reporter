@@ -2,7 +2,7 @@
 
 namespace Guillermoandrae\Coronavirus\Contracts;
 
-interface SourceAggregatorInterface
+interface SourceAggregatorInterface extends CacheItemPoolAwareInterface
 {
     /**
      * Adds a source to this aggregator.

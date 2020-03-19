@@ -2,9 +2,7 @@
 
 namespace Guillermoandrae\Coronavirus\Contracts;
 
-use Psr\Cache\CacheItemPoolInterface;
-
-interface SourceInterface
+interface SourceInterface extends CacheItemPoolAwareInterface
 {
     /**
      * The cache lifetime.
@@ -45,19 +43,4 @@ interface SourceInterface
      * @return int  Time the data was last modified.
      */
     public function getLastModified(): int;
-
-    /**
-     * Sets the cache item pool.
-     *
-     * @param CacheItemPoolInterface $cacheItemPool  The cache item pool.
-     * @return SourceInterface  This source object.
-     */
-    public function setCacheItemPool(CacheItemPoolInterface $cacheItemPool);
-
-    /**
-     * Returns the cache item pool.
-     *
-     * @return CacheItemPoolInterface|null The cache item pool.
-     */
-    public function getCacheItemPool(): ?CacheItemPoolInterface;
 }
