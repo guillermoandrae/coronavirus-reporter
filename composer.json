@@ -1,11 +1,9 @@
 {
     "name": "guillermoandrae/coronavirus-reporter",
-    "description": "Skeleton for PHP projects",
+    "description": "A small PHP tool that scrapes and outputs data about COVID-19 in select states.",
     "license": "MIT",
     "require": {
-        "php": "^7.2",
-        "ext-dom": "*",
-        "aws/aws-sdk-php": "^3.95"
+        "php": "^7.2"
     },
     "autoload": {
         "psr-4": {
