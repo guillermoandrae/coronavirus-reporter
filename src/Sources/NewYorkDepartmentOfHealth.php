@@ -25,7 +25,7 @@ final class NewYorkDepartmentOfHealth extends AbstractSource
         $month = $parts[0];
         $day = str_replace(',', '', $parts[1]);
         $year = $parts[2];
-        $time = $parts[4] . ' ' . $parts[5];
+        $time = $parts[4];
         $string = sprintf('%d %s %d %s', $day, $month, $year, $time);
         return strtotime($string);
     }
