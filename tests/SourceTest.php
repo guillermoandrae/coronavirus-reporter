@@ -1,6 +1,6 @@
 <?php
 
-namespace GuillermoandraeTest\Coronavirus\Contracts;
+namespace GuillermoandraeTest\Coronavirus;
 
 use Cache\Adapter\Filesystem\FilesystemCachePool;
 use Guillermoandrae\Coronavirus\Contracts\SourceInterface;
@@ -48,6 +48,6 @@ final class SourceTest extends TestCase
         $filesystem = new Filesystem($filesystemAdapter);
         $this->pool = new FilesystemCachePool($filesystem);
         $this->pool->clear();
-        $this->source = new NewYorkDepartmentOfHealth('', 'tests/Fixtures/ny.html');
+        $this->source = new NewYorkDepartmentOfHealth('', 'tests/fixtures/ny.html');
     }
 }

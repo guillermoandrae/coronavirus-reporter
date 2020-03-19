@@ -41,21 +41,21 @@ final class ReporterTest extends TestCase
             [
                 GeorgiaDepartmentOfHealth::class,
                 'Georgia',
-                'tests/Fixtures/ga.html',
+                'tests/fixtures/ga.html',
                 '404',
                 'March 17, 2020 at 11:34 AM'
             ],
             [
                 NewYorkDepartmentOfHealth::class,
                 'New York',
-                'tests/Fixtures/ny.html',
+                'tests/fixtures/ny.html',
                 '7,180',
                 'March 17, 2020 at 2:03 PM'
             ],
             [
                 PennsylvaniaDepartmentOfHealth::class,
                 'Pennsylvania',
-                'tests/Fixtures/pa.html',
+                'tests/fixtures/pa.html',
                 '412',
                 'March 17, 2020 at 12:45 PM'
             ],
