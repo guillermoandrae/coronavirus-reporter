@@ -11,8 +11,8 @@ final class PennsylvaniaDepartmentOfHealth extends AbstractSource
     public function getNumConfirmedCases(): int
     {
         $page = $this->getData();
-        preg_match('/Confirmed Cases(.*) -/', $page, $matches);
-        return (int) str_replace([',', '&#160;', '&nbsp;', '&#58;'], '', trim($matches[1]));
+        preg_match('/Confirmed Cases(.*)\<\/span\>/', $page, $matches);
+        return (int) str_replace([',', '&#160;', '&nbsp;', '&#58;', ':', '-'], '', trim($matches[1]));
     }
 
     public function getLastModified(): int
