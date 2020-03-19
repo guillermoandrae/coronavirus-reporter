@@ -2,8 +2,6 @@
 
 namespace Guillermoandrae\Coronavirus\Sources;
 
-use \DOMDocument;
-use \DOMXPath;
 use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
 
 final class PennsylvaniaDepartmentOfHealth extends AbstractSource

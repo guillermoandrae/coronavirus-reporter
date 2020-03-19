@@ -2,9 +2,8 @@
 
 namespace Guillermoandrae\Coronavirus\Contracts;
 
-use Psr\Cache\CacheItemPoolInterface;
-use \Exception;
-use \ErrorException;
+use ErrorException;
+use Exception;
 
 abstract class AbstractSource implements SourceInterface
 {

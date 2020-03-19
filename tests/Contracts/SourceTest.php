@@ -3,7 +3,6 @@
 namespace GuillermoandraeTest\Coronavirus\Contracts;
 
 use Cache\Adapter\Filesystem\FilesystemCachePool;
-use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
 use Guillermoandrae\Coronavirus\Contracts\SourceInterface;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use League\Flysystem\Adapter\Local;
