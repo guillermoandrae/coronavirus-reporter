@@ -3,8 +3,8 @@
 namespace GuillermoandraeTest\Coronavirus;
 
 use Cache\Adapter\Filesystem\FilesystemCachePool;
-use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
 use Guillermoandrae\Coronavirus\SourceAggregator;
+use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PHPUnit\Framework\TestCase;
@@ -18,12 +18,8 @@ final class SourceAggregatorTest extends TestCase
         $filesystem = new Filesystem($filesystemAdapter);
         $pool = new FilesystemCachePool($filesystem);
         $aggregator = new SourceAggregator($pool);
-        $mock = $this->getMockForAbstractClass(
-            AbstractSource::class,
-            ['California'],
-            'CaliforniaDepartmentOfHealth'
-        );
-        $aggregator->addSource($mock);
+        $source = new NewYorkDepartmentOfHealth();
+        $aggregator->addSource($source);
         $this->assertInstanceOf(
             CacheItemPoolInterface::class,
             $aggregator->getSources()[0]->getCacheItemPool()

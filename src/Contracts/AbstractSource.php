@@ -25,23 +25,20 @@ abstract class AbstractSource implements SourceInterface
 
     /**
      * AbstractSource constructor. Derives state name if not provided.
-     *
-     * @param string $state  OPTIONAL The source state.
-     * @param string $url  OPTIONAL The source URL.
      */
-    final public function __construct(string $state = '', string $url = '')
+    final public function __construct()
     {
-        if (!empty($state)) {
-            $this->state = $state;
-        } elseif (empty($this->state)) {
+        if (empty($this->state)) {
             $name = get_called_class();
             preg_match('/\\\Sources\\\(.*)Department/', $name, $matches);
-            $this->state = $matches[1];
+            $this->setState($matches[1]);
         }
+    }
 
-        if (!empty($url)) {
-            $this->url = $url;
-        }
+    final public function setUrl(string $url): SourceInterface
+    {
+        $this->url = $url;
+        return $this;
     }
 
     final public function getUrl(): string
@@ -67,6 +64,12 @@ abstract class AbstractSource implements SourceInterface
         } catch (Exception $ex) {
             return file_get_contents($this->getUrl());
         }
+    }
+
+    final public function setState(string $state): SourceInterface
+    {
+        $this->state = $state;
+        return $this;
     }
 
     final public function getState(): string

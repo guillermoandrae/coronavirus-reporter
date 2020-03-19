@@ -4,10 +4,10 @@ namespace GuillermoandraeTest\Coronavirus;
 
 use Guillermoandrae\Coronavirus\Reporter;
 use Guillermoandrae\Coronavirus\SourceAggregator;
+use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 use PHPUnit\Framework\TestCase;
 
 final class ReporterTest extends TestCase
@@ -26,7 +26,8 @@ final class ReporterTest extends TestCase
     {
         ob_start();
         $aggregator = new SourceAggregator();
-        $source = new $className('', $path);
+        $source = new $className();
+        $source->setUrl($path);
         $aggregator->addSource($source);
         $reporter = new Reporter($aggregator);
         $reporter->execute();

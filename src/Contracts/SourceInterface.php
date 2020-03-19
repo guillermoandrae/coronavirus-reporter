@@ -10,9 +10,17 @@ interface SourceInterface extends CacheItemPoolAwareInterface
     const CACHE_LIFETIME = 3600;
 
     /**
+     * Sets the URL.
+     *
+     * @param string $url  The source URL.
+     * @return SourceInterface The source.
+     */
+    public function setUrl(string $url): SourceInterface;
+
+    /**
      * Returns the source URL.
      *
-     * @return string  The url.
+     * @return string  The source URL.
      */
     public function getUrl(): string;
 
@@ -22,6 +30,14 @@ interface SourceInterface extends CacheItemPoolAwareInterface
      * @return string  The source data.
      */
     public function getData(): string;
+
+    /**
+     * Sets the source state.
+     *
+     * @param string $state The source state.
+     * @return SourceInterface The source.
+     */
+    public function setState(string $state): SourceInterface;
 
     /**
      * Returns the source state.

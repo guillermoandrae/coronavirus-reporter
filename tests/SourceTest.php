@@ -48,6 +48,7 @@ final class SourceTest extends TestCase
         $filesystem = new Filesystem($filesystemAdapter);
         $this->pool = new FilesystemCachePool($filesystem);
         $this->pool->clear();
-        $this->source = new NewYorkDepartmentOfHealth('', 'tests/fixtures/ny.html');
+        $this->source = new NewYorkDepartmentOfHealth();
+        $this->source->setUrl('tests/fixtures/ny.html');
     }
 }
