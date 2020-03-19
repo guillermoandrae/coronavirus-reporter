@@ -40,14 +40,11 @@ final class Reporter
     {
         $sources = $this->getSourceAggregator()->getSources();
         foreach ($sources as $source) {
-            $state = $source->getState();
-            $number = $source->getNumConfirmedCases();
-            $timestamp = $source->getLastModified();
             printf(
                 'Number of confirmed cases in %s: %d (as of %s)' . PHP_EOL,
-                $state,
-                $number,
-                date('F d, Y \a\t h:i A', $timestamp)
+                $source->getState(),
+                $source->getNumConfirmedCases(),
+                date('F d, Y \a\t h:i A', $source->getLastModified())
             );
         }
     }
