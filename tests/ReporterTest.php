@@ -7,6 +7,7 @@ use Guillermoandrae\Coronavirus\SourceAggregator;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 use PHPUnit\Framework\TestCase;
 
 final class ReporterTest extends TestCase
@@ -58,6 +59,13 @@ final class ReporterTest extends TestCase
                 'tests/fixtures/pa.html',
                 '412',
                 'March 17, 2020 at 12:45 PM'
+            ],
+            [
+                CaliforniaDepartmentOfHealth::class,
+                'California',
+                'tests/fixtures/ca.html',
+                '415',
+                'March 18, 2020 at 6:00 PM'
             ],
         ];
     }

@@ -10,6 +10,7 @@ use Guillermoandrae\Coronavirus\SourceAggregator;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 
 $filesystemAdapter = new Local(realpath('.'));
 $filesystem = new Filesystem($filesystemAdapter);
@@ -19,6 +20,7 @@ $aggregator = new SourceAggregator($cacheItemPool);
 $aggregator->addSource(new NewYorkDepartmentOfHealth());
 $aggregator->addSource(new PennsylvaniaDepartmentOfHealth());
 $aggregator->addSource(new GeorgiaDepartmentOfHealth());
+$aggregator->addSource(new CaliforniaDepartmentOfHealth());
 
 $reporter = new Reporter($aggregator);
 $reporter->execute();
