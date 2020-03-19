@@ -1,4 +1,4 @@
-cache/*.cache
+cache
 vendor
 clover.xml
 .phpunit.result.cache
