@@ -3,7 +3,8 @@
     "description": "A small PHP tool that scrapes and outputs data about COVID-19 in select states.",
     "license": "MIT",
     "require": {
-        "php": "^7.2"
+        "php": "^7.2",
+        "cache/filesystem-adapter": "^1.0"
     },
     "autoload": {
         "psr-4": {

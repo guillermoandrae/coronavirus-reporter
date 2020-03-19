@@ -2,8 +2,12 @@
 
 namespace GuillermoandraeTest\Coronavirus;
 
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
+use Cache\Adapter\Filesystem\FilesystemCachePool;
 use Guillermoandrae\Coronavirus\Contracts\SourceInterface;
 use PHPUnit\Framework\TestCase;
+use Psr\Cache\CacheItemPoolInterface;
 
 abstract class SourceTestCase extends TestCase
 {
@@ -12,16 +16,16 @@ abstract class SourceTestCase extends TestCase
      */
     protected $source;
 
+    /**
+     * @var CacheItemPoolInterface
+     */
+    protected $pool;
+
     protected function setUp(): void
     {
-        $path = realpath('cache');
-        if ($handle = opendir($path)) {
-            while (false !== ($file = readdir($handle))) {
-                if (strstr($file, '.cache')) {
-                    unlink($path  . '/' . $file);
-                }
-            }
-            closedir($handle);
-        }
+        $filesystemAdapter = new Local(realpath('.'));
+        $filesystem = new Filesystem($filesystemAdapter);
+        $this->pool = new FilesystemCachePool($filesystem);
+        $this->pool->clear();
     }
 }

@@ -2,6 +2,10 @@
 
 namespace Guillermoandrae\Coronavirus\Contracts;
 
+use Psr\Cache\CacheItemPoolInterface;
+use \Exception;
+use \ErrorException;
+
 abstract class AbstractSource implements SourceInterface
 {
     /**
@@ -19,16 +23,23 @@ abstract class AbstractSource implements SourceInterface
     protected $state = '';
 
     /**
+     * The cache item pool.
+     *
+     * @var CacheItemPoolInterface
+     */
+    protected $cacheItemPool;
+
+    /**
      * AbstractSource constructor. Derives state name if not provided.
      *
-     * @param string $state  The source state.
-     * @param string $url  The source URL.
+     * @param string $state  OPTIONAL The source state.
+     * @param string $url  OPTIONAL The source URL.
      */
     final public function __construct(string $state = '', string $url = '')
     {
         if (!empty($state)) {
             $this->state = $state;
-        } else {
+        } elseif (empty($this->state)) {
             $name = get_called_class();
             preg_match('/\\\Sources\\\(.*)Department/', $name, $matches);
             $this->state = $matches[1];
@@ -46,20 +57,37 @@ abstract class AbstractSource implements SourceInterface
 
     final public function getData(): string
     {
-        $key = md5(get_called_class());
-        $path = sprintf('cache/%s.cache', $key);
-        $age = time() - filemtime(realpath($path));
-        if (file_exists($path) && $age < SourceInterface::CACHE_LIFETIME) {
-            return file_get_contents($path);
-        } else {
+        try {
+            if (!$cachePool = $this->getCacheItemPool()) {
+                throw new ErrorException('No cache item pool exists.');
+            }
+            $cacheKey = md5(get_called_class()) . '.cache';
+            $cacheItem = $cachePool->getItem($cacheKey);
+            if ($cacheItem->isHit()) {
+                return $cacheItem->get();
+            }
             $data = file_get_contents($this->getUrl());
-            file_put_contents($path, $data);
+            $cacheItem->set($data);
+            $cachePool->save($cacheItem);
             return $data;
+        } catch (Exception $ex) {
+            return file_get_contents($this->getUrl());
         }
     }
 
     final public function getState(): string
     {
         return $this->state;
+    }
+
+    final public function setCacheItemPool(CacheItemPoolInterface $cacheItemPool): SourceInterface
+    {
+        $this->cacheItemPool = $cacheItemPool;
+        return $this;
+    }
+
+    final public function getCacheItemPool(): ?CacheItemPoolInterface
+    {
+        return $this->cacheItemPool;
     }
 }

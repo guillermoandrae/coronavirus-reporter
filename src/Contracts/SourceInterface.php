@@ -2,13 +2,10 @@
 
 namespace Guillermoandrae\Coronavirus\Contracts;
 
+use Psr\Cache\CacheItemPoolInterface;
+
 interface SourceInterface
 {
-    /**
-     * The lifetime of the cached pages.
-     */
-    const CACHE_LIFETIME = 3600;
-
     /**
      * Returns the source URL.
      *
@@ -43,4 +40,19 @@ interface SourceInterface
      * @return int  Time the data was last modified.
      */
     public function getLastModified(): int;
+
+    /**
+     * Sets the cache item pool.
+     *
+     * @param CacheItemPoolInterface $cacheItemPool  The cache item pool.
+     * @return SourceInterface  This source object.
+     */
+    public function setCacheItemPool(CacheItemPoolInterface $cacheItemPool): SourceInterface;
+
+    /**
+     * Returns the cache item pool.
+     *
+     * @return CacheItemPoolInterface|null The cache item pool.
+     */
+    public function getCacheItemPool(): ?CacheItemPoolInterface;
 }
