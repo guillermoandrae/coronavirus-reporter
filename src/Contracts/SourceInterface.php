@@ -47,7 +47,7 @@ interface SourceInterface
      * @param CacheItemPoolInterface $cacheItemPool  The cache item pool.
      * @return SourceInterface  This source object.
      */
-    public function setCacheItemPool(CacheItemPoolInterface $cacheItemPool): SourceInterface;
+    public function setCacheItemPool(CacheItemPoolInterface $cacheItemPool);
 
     /**
      * Returns the cache item pool.

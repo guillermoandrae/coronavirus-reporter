@@ -8,6 +8,8 @@ use \ErrorException;
 
 abstract class AbstractSource implements SourceInterface
 {
+    use CacheItemPoolAwareTrait;
+
     /**
      * The source URL.
      *
@@ -21,13 +23,6 @@ abstract class AbstractSource implements SourceInterface
      * @var string
      */
     protected $state = '';
-
-    /**
-     * The cache item pool.
-     *
-     * @var CacheItemPoolInterface
-     */
-    protected $cacheItemPool;
 
     /**
      * AbstractSource constructor. Derives state name if not provided.
@@ -78,16 +73,5 @@ abstract class AbstractSource implements SourceInterface
     final public function getState(): string
     {
         return $this->state;
-    }
-
-    final public function setCacheItemPool(CacheItemPoolInterface $cacheItemPool): SourceInterface
-    {
-        $this->cacheItemPool = $cacheItemPool;
-        return $this;
-    }
-
-    final public function getCacheItemPool(): ?CacheItemPoolInterface
-    {
-        return $this->cacheItemPool;
     }
 }
