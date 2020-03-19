@@ -44,7 +44,7 @@ final class Reporter
                 'Number of confirmed cases in %s: %s (as of %s)' . PHP_EOL,
                 $source->getState(),
                 number_format($source->getNumConfirmedCases()),
-                date('F d, Y \a\t h:i A', $source->getLastModified())
+                date('F d, Y \a\t g:i A', $source->getLastModified())
             );
         }
     }
