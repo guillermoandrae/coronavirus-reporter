@@ -4,15 +4,31 @@ namespace Guillermoandrae\Coronavirus\Contracts;
 
 abstract class AbstractSource implements SourceInterface
 {
+    /**
+     * The source URL.
+     *
+     * @var string
+     */
     protected $url = '';
 
+    /**
+     * The source state.
+     *
+     * @var string
+     */
     protected $state = '';
 
-    public function __construct(string $state = '', string $url = '')
+    /**
+     * AbstractSource constructor. Derives state name if not provided.
+     *
+     * @param string $state  The source state.
+     * @param string $url  The source URL.
+     */
+    final public function __construct(string $state = '', string $url = '')
     {
         if (!empty($state)) {
             $this->state = $state;
-        } elseif (empty($this->state)) {
+        } else {
             $name = get_called_class();
             preg_match('/\\\Sources\\\(.*)Department/', $name, $matches);
             $this->state = $matches[1];
