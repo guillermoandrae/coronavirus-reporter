@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-require 'vendor/autoload.php';
+require dirname(__DIR__) . '/vendor/autoload.php';
 
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -12,7 +12,7 @@ use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 
-$filesystemAdapter = new Local(realpath('.'));
+$filesystemAdapter = new Local(dirname(__DIR__));
 $filesystem = new Filesystem($filesystemAdapter);
 $cacheItemPool = new FilesystemCachePool($filesystem);
 
