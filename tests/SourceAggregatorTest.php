@@ -14,7 +14,7 @@ final class SourceAggregatorTest extends TestCase
 {
     public function testExecute()
     {
-        $filesystemAdapter = new Local(realpath('.'));
+        $filesystemAdapter = new Local(realpath('tests'));
         $filesystem = new Filesystem($filesystemAdapter);
         $pool = new FilesystemCachePool($filesystem);
         $aggregator = new SourceAggregator($pool);

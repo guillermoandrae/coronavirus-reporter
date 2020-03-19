@@ -12,6 +12,8 @@ use PHPUnit\Framework\TestCase;
 final class ReporterTest extends TestCase
 {
     /**
+     * Tests reporting on all sources.
+     *
      * @param string $className The source class name.
      * @param string $state The state.
      * @param string $path The path to the fixture data.
