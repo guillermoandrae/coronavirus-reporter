@@ -62,7 +62,7 @@ abstract class AbstractSource implements SourceInterface
                 return $cacheItem->get();
             }
             $data = file_get_contents($this->getUrl());
-            $cacheItem->set($data);
+            $cacheItem->set($data)->expiresAfter(SourceInterface::CACHE_LIFETIME);
             $cachePool->save($cacheItem);
             return $data;
         } catch (Exception $ex) {

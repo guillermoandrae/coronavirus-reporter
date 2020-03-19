@@ -7,6 +7,11 @@ use Psr\Cache\CacheItemPoolInterface;
 interface SourceInterface
 {
     /**
+     * The cache lifetime.
+     */
+    const CACHE_LIFETIME = 3600;
+
+    /**
      * Returns the source URL.
      *
      * @return string  The url.
