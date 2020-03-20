@@ -4,7 +4,7 @@ namespace GuillermoandraeTest\Coronavirus;
 
 use Cache\Adapter\Filesystem\FilesystemCachePool;
 use Guillermoandrae\Coronavirus\SourceAggregator;
-use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Source\NewYorkDepartmentOfHealth;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PHPUnit\Framework\TestCase;

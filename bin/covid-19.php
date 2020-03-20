@@ -7,10 +7,10 @@ use League\Flysystem\Filesystem;
 use Cache\Adapter\Filesystem\FilesystemCachePool;
 use Guillermoandrae\Coronavirus\Command;
 use Guillermoandrae\Coronavirus\SourceAggregator;
-use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Source\NewYorkDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Source\PennsylvaniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Source\GeorgiaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Source\CaliforniaDepartmentOfHealth;
 
 $filesystemAdapter = new Local(dirname(__DIR__));
 $filesystem = new Filesystem($filesystemAdapter);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Guillermoandrae\Coronavirus\Sources;
+namespace Guillermoandrae\Coronavirus\Source;
 
 use Guillermoandrae\Coronavirus\Contract\AbstractSource;
 

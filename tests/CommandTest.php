@@ -4,10 +4,10 @@ namespace GuillermoandraeTest\Coronavirus;
 
 use Guillermoandrae\Coronavirus\Command;
 use Guillermoandrae\Coronavirus\SourceAggregator;
-use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Source\CaliforniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Source\GeorgiaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Source\NewYorkDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Source\PennsylvaniaDepartmentOfHealth;
 use PHPUnit\Framework\TestCase;
 
 final class CommandTest extends TestCase

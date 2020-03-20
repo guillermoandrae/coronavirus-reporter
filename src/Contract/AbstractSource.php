@@ -30,7 +30,7 @@ abstract class AbstractSource implements SourceInterface
     {
         if (empty($this->state)) {
             $name = get_called_class();
-            preg_match('/\\\Sources\\\(.*)Department/', $name, $matches);
+            preg_match('/\\\Source\\\(.*)Department/', $name, $matches);
             $this->setState($matches[1]);
         }
     }
