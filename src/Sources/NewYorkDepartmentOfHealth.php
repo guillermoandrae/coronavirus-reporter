@@ -14,7 +14,7 @@ final class NewYorkDepartmentOfHealth extends AbstractDepartmentOfHealthSource
     public function getNumConfirmedCases(): int
     {
         $page = $this->getData();
-        preg_match('/statewide total to (.*) cases/', $page, $matches);
+        preg_match('/statewide total to (.*) in/', $page, $matches);
         return (int) StringParser::stripChars($matches[1]);
     }
 
