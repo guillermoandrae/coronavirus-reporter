@@ -2,9 +2,9 @@
 
 namespace Guillermoandrae\Coronavirus;
 
-use Guillermoandrae\Coronavirus\Contracts\SourceAggregatorInterface;
+use Guillermoandrae\Coronavirus\Contract\SourceAggregatorInterface;
 
-final class Reporter
+final class Command
 {
     /**
      * The SourceAggregator.

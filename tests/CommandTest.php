@@ -2,7 +2,7 @@
 
 namespace GuillermoandraeTest\Coronavirus;
 
-use Guillermoandrae\Coronavirus\Reporter;
+use Guillermoandrae\Coronavirus\Command;
 use Guillermoandrae\Coronavirus\SourceAggregator;
 use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
@@ -10,7 +10,7 @@ use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use PHPUnit\Framework\TestCase;
 
-final class ReporterTest extends TestCase
+final class CommandTest extends TestCase
 {
     /**
      * Tests reporting on all sources.
@@ -29,7 +29,7 @@ final class ReporterTest extends TestCase
         $source = new $className();
         $source->setUrl($path);
         $aggregator->addSource($source);
-        $reporter = new Reporter($aggregator);
+        $reporter = new Command($aggregator);
         $reporter->execute();
         $output = ob_get_clean();
         $this->assertStringContainsString($state, $output);

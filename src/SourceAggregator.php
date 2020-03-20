@@ -2,9 +2,9 @@
 
 namespace Guillermoandrae\Coronavirus;
 
-use Guillermoandrae\Coronavirus\Contracts\CacheItemPoolAwareTrait;
-use Guillermoandrae\Coronavirus\Contracts\SourceAggregatorInterface;
-use Guillermoandrae\Coronavirus\Contracts\SourceInterface;
+use Guillermoandrae\Coronavirus\Contract\CacheItemPoolAwareTrait;
+use Guillermoandrae\Coronavirus\Contract\SourceAggregatorInterface;
+use Guillermoandrae\Coronavirus\Contract\SourceInterface;
 use Psr\Cache\CacheItemPoolInterface;
 
 final class SourceAggregator implements SourceAggregatorInterface

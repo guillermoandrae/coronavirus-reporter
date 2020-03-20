@@ -5,7 +5,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use Cache\Adapter\Filesystem\FilesystemCachePool;
-use Guillermoandrae\Coronavirus\Reporter;
+use Guillermoandrae\Coronavirus\Command;
 use Guillermoandrae\Coronavirus\SourceAggregator;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
@@ -22,5 +22,5 @@ $aggregator->addSource(new PennsylvaniaDepartmentOfHealth());
 $aggregator->addSource(new GeorgiaDepartmentOfHealth());
 $aggregator->addSource(new CaliforniaDepartmentOfHealth());
 
-$reporter = new Reporter($aggregator);
+$reporter = new Command($aggregator);
 $reporter->execute();

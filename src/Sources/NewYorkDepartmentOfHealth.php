@@ -2,7 +2,7 @@
 
 namespace Guillermoandrae\Coronavirus\Sources;
 
-use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
+use Guillermoandrae\Coronavirus\Contract\AbstractSource;
 
 final class NewYorkDepartmentOfHealth extends AbstractSource
 {
