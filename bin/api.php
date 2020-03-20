@@ -10,6 +10,7 @@ use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 
@@ -27,6 +28,7 @@ lambda(function (array $event) {
     $aggregator->addSource(new GeorgiaDepartmentOfHealth());
     $aggregator->addSource(new NewYorkDepartmentOfHealth());
     $aggregator->addSource(new PennsylvaniaDepartmentOfHealth());
+    $aggregator->addSource(new VirginiaCovidTrackingApi());
 
     $reporter = new Api($aggregator);
     return $reporter->execute();

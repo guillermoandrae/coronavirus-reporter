@@ -2,10 +2,10 @@
 
 namespace Guillermoandrae\Coronavirus\Sources;
 
-use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
+use Guillermoandrae\Coronavirus\Contracts\AbstractDepartmentOfHealthSource;
 use Guillermoandrae\Coronavirus\Helpers\StringParser;
 
-final class CaliforniaDepartmentOfHealth extends AbstractSource
+final class CaliforniaDepartmentOfHealth extends AbstractDepartmentOfHealthSource
 {
     protected $url = 'https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx';
 

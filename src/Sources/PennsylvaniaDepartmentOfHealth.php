@@ -2,10 +2,10 @@
 
 namespace Guillermoandrae\Coronavirus\Sources;
 
-use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
+use Guillermoandrae\Coronavirus\Contracts\AbstractDepartmentOfHealthSource;
 use Guillermoandrae\Coronavirus\Helpers\StringParser;
 
-final class PennsylvaniaDepartmentOfHealth extends AbstractSource
+final class PennsylvaniaDepartmentOfHealth extends AbstractDepartmentOfHealthSource
 {
     protected $url = 'https://www.health.pa.gov/topics/disease/coronavirus/Pages/Coronavirus.aspx';
 

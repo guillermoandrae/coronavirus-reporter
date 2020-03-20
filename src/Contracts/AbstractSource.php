@@ -23,18 +23,6 @@ abstract class AbstractSource implements SourceInterface
      */
     protected $state = '';
 
-    /**
-     * AbstractSource constructor. Derives state name if not provided.
-     */
-    final public function __construct()
-    {
-        if (empty($this->state)) {
-            $name = get_called_class();
-            preg_match('/\\\Sources\\\(.*)Department/', $name, $matches);
-            $this->setState($matches[1]);
-        }
-    }
-
     final public function setUrl(string $url): SourceInterface
     {
         $this->url = $url;

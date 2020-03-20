@@ -8,6 +8,7 @@ use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
 use PHPUnit\Framework\TestCase;
 
 final class CommandTest extends TestCase
@@ -67,6 +68,13 @@ final class CommandTest extends TestCase
                 'tests/fixtures/ca.html',
                 '415',
                 'March 18, 2020 at 6:00 PM'
+            ],
+            [
+                VirginiaCovidTrackingApi::class,
+                'Virginia',
+                'tests/fixtures/va.json',
+                '757',
+                'March 20, 2020 at 5:00 AM'
             ],
         ];
     }

@@ -2,9 +2,9 @@
 
 namespace Guillermoandrae\Coronavirus\Sources;
 
-use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
+use Guillermoandrae\Coronavirus\Contracts\AbstractDepartmentOfHealthSource;
 
-class GeorgiaDepartmentOfHealth extends AbstractSource
+class GeorgiaDepartmentOfHealth extends AbstractDepartmentOfHealthSource
 {
     protected $url = 'https://dph.georgia.gov/covid-19-daily-status-report';
 
