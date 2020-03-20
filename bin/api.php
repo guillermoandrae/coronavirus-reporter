@@ -3,15 +3,15 @@
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Aws\S3\S3Client;
-use League\Flysystem\Filesystem;
-use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use Cache\Adapter\Filesystem\FilesystemCachePool;
 use Guillermoandrae\Coronavirus\Api;
 use Guillermoandrae\Coronavirus\SourceAggregator;
+use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
+use League\Flysystem\AwsS3v3\AwsS3Adapter;
+use League\Flysystem\Filesystem;
 
 lambda(function (array $event) {
     $s3client = new S3Client([
