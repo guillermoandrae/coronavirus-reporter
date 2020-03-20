@@ -2,37 +2,10 @@
 
 namespace Guillermoandrae\Coronavirus;
 
-use Guillermoandrae\Coronavirus\Contracts\SourceAggregatorInterface;
+use Guillermoandrae\Coronavirus\Contracts\AbstractOutput;
 
-final class Command
+final class Command extends AbstractOutput
 {
-    /**
-     * The SourceAggregator.
-     *
-     * @var SourceAggregatorInterface
-     */
-    private $sourceAggregator;
-
-    /**
-     * Reporter constructor.
-     *
-     * @param SourceAggregatorInterface $sourceAggregator The SourceAggregator.
-     */
-    public function __construct(SourceAggregatorInterface $sourceAggregator)
-    {
-        $this->sourceAggregator = $sourceAggregator;
-    }
-
-    /**
-     * Returns the SourceAggregator.
-     *
-     * @return SourceAggregatorInterface
-     */
-    public function getSourceAggregator(): SourceAggregatorInterface
-    {
-        return $this->sourceAggregator;
-    }
-
     /**
      * Prints case information from each source.
      */

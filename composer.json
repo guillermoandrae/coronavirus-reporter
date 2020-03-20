@@ -4,7 +4,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "cache/filesystem-adapter": "^1.0"
+        "ext-json": "^1.6",
+        "cache/filesystem-adapter": "^1.0",
+        "aws/aws-sdk-php": "^3.133",
+        "mnapoli/bref": "^0.3.9"
     },
     "autoload": {
         "psr-4": {
@@ -36,6 +39,15 @@
         ],
         "flush": [
             "rm -rf cache/*.cache"
+        ],
+        "invoke": [
+            "sam local invoke --no-event"
+        ],
+        "package": [
+            "sam package --output-template-file .stack.yaml --s3-bucket coronavirus-reporter --s3-prefix stacks"
+        ],
+        "deploy": [
+            "sam deploy --template-file .stack.yaml --capabilities CAPABILITY_IAM --stack-name coronavirus-reporter"
         ]
     }
 }

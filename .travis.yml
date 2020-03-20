@@ -1,13 +1,30 @@
-language: php
-matrix:
-    include:
-        - php: 7.2
-        - php: 7.3
-    fast_finish: true
+language: generic
+dist: xenial
+before_install:
+- phpenv global 7.2
 install:
-  - composer install --optimize-autoloader
+- pip install --user awscli
+- pip install --user aws-sam-cli
+matrix:
+  include:
+  - php: 7.2
+  - php: 7.3
+  fast_finish: true
 script:
-  - composer test
+- composer install --optimize-autoloader
+- composer test
+- composer package
 after_success:
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover ./clover.xml
+- wget https://scrutinizer-ci.com/ocular.phar
+- php ocular.phar code-coverage:upload --format=php-clover ./clover.xml
+deploy:
+  provider: script
+  script: composer deploy
+  skip_cleanup: true
+  on:
+    repo: guillermoandrae/coronavirus-reporter
+env:
+  global:
+  - AWS_DEFAULT_REGION=us-east-1
+  - secure: Mj/o5PKeziKyW2QQJINzyy1j3ObiEjGcCJ/uuALAssCRqXRUS3NDpCMqh24t7peEIuSBK2PGVg24NRu9p/XGnAJVAlyBtqmRFf1oNy30sbN450ewFo671FzWkhUhBZNiUoHNPxfgl3JzU1KhyPG8eDGUhu0YecH4UuEkIAo2TGuLQ0c2hUShNJXarLKOrDKS7lNrV/ztLPvJuKf1SRjw5hHWk9Rcp+EtOprUfRcl4nl0mQAEHSr0gnusv6+3D23XvY2ZmqbCygdQKTXqQHyo6dLLA6B8q3X3KHJ9dvDtyUlzytXOkXR7x0erGL2g+mOKV79pfArf0iSZJ5vhnJOnYQCwbDrr8qkWWOXI5N/BYNxcCuV0ANd3bYyrwLmTuVBxk0Bkdv3Z68OYN4N3wPH0L0Ql6dqBn7qu/obxOUIYOoFkMNAhJOWaVrm2lJxTAe1IgJbEAfnhhRkzz8y0SQ9/f2V9jmMa2BA9S9oTC/OdtgwwQXgfTcxrl26WVoTGUZ5KxV+b1rEEwIdQ28+0jzMEInuZ+W4Q1Hm5sM+douDv9mbNcxdjtfTCxMP5N/dQ1k58FaLVWTH8ni4/3OF2fiPGiJOVERycOPhU0OiMVfn0tsltfywW4uzomY2z2DmkBwsuhmg4tIsgciW8FXZ0lUDzvNSGbZ0YyatpDEp6nQMALTk=
+  - secure: aWvs6hFHI08PcMhy08DOK6BTyRZ+eghFh/4PW5NDFd9+BTuafzHDdP8x6olw9YV3RwlNevpgPy0GAwBs20iTBLN2BObmk1DsP0ODfoDGXU02auoCIYmSlyciVs796geXwAIkc3LGKYQ3vKSVpaC3wFZoUUYBYK6E5GyCt/pBXpRL/Dp9mJ8ZN21lyzByY54ysiKeGDLhpYx2BozvWh+R44fcOidUCI1306e3bllE/s9e1HlOI6xhwGfoW4Ilp/tnvp+cJNTNSQxvE7ETAzD29xGRSvNdNu3wFqhQ8Nj9kA67M2mSJ0u8x8cQWGj+nTKowjmbNeBLkC4m1RuF4t4eSdG/KWy5rhJFD4IBjljHostNvdLX8pZFsU2bE9hnn6xBLzalnjvFhFnhMRM8qMjNLIUWQr7T7h088G+QauLCQL4vf9H7t1ur/G5N6dH8HJ6mVCP5ABo4fboFetjsyPKhyB6/9gbjIFlPVvvLqDPe95/RksKOQvO7rrYLqSQW58jp7y9vQdZ2OPdFT1ArU3U0cplnRVmJNxzXo0r8i2YYo1iierXU9rL/MoKK3KnNs811kb9JiLVskfztgUEnACAiWd5+f7obx1mbVDI7R72MtvYD54dnY7aBaXxcNcQOMsFgXtlxRWV8uOX4Yp9gjvNwYaWs23eeMQ7wHn5aXuL165E=
