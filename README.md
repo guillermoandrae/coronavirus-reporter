@@ -7,6 +7,7 @@ This project provides data about the number of confirmed COVID-19 cases in selec
 * Georgia
 * New York
 * Pennsylvania
+* Virginia (pulling from https://covidtracking.com/, which has just about all of the information you might actually need)
 
 ## Installation
 Do this, then relax (if you can!!!!!):
