@@ -3,8 +3,8 @@
 namespace GuillermoandraeTest\Coronavirus;
 
 use Cache\Adapter\Filesystem\FilesystemCachePool;
-use Guillermoandrae\Coronavirus\Contract\SourceInterface;
-use Guillermoandrae\Coronavirus\Source\NewYorkDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Contracts\SourceInterface;
+use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PHPUnit\Framework\TestCase;

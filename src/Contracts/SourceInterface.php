@@ -1,6 +1,6 @@
 <?php
 
-namespace Guillermoandrae\Coronavirus\Contract;
+namespace Guillermoandrae\Coronavirus\Contracts;
 
 interface SourceInterface extends CacheItemPoolAwareInterface
 {

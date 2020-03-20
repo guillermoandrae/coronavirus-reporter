@@ -1,6 +1,6 @@
 <?php
 
-namespace Guillermoandrae\Coronavirus\Contract;
+namespace Guillermoandrae\Coronavirus\Contracts;
 
 use ErrorException;
 use Exception;
@@ -30,7 +30,7 @@ abstract class AbstractSource implements SourceInterface
     {
         if (empty($this->state)) {
             $name = get_called_class();
-            preg_match('/\\\Source\\\(.*)Department/', $name, $matches);
+            preg_match('/\\\Sources\\\(.*)Department/', $name, $matches);
             $this->setState($matches[1]);
         }
     }

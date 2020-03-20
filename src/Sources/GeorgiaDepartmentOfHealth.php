@@ -1,8 +1,8 @@
 <?php
 
-namespace Guillermoandrae\Coronavirus\Source;
+namespace Guillermoandrae\Coronavirus\Sources;
 
-use Guillermoandrae\Coronavirus\Contract\AbstractSource;
+use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
 
 class GeorgiaDepartmentOfHealth extends AbstractSource
 {

@@ -2,7 +2,7 @@
 
 namespace Guillermoandrae\Coronavirus;
 
-use Guillermoandrae\Coronavirus\Contract\SourceAggregatorInterface;
+use Guillermoandrae\Coronavirus\Contracts\SourceAggregatorInterface;
 
 final class Command
 {

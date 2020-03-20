@@ -1,6 +1,6 @@
 <?php
 
-namespace Guillermoandrae\Coronavirus\Contract;
+namespace Guillermoandrae\Coronavirus\Contracts;
 
 use Psr\Cache\CacheItemPoolInterface;
 
