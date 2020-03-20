@@ -1,22 +1,23 @@
 language: generic
 dist: xenial
 before_install:
-- phpenv global 7.2
+  - pyenv global 3.6.7
+  - phpenv global 7.2
 install:
-- pip install --user awscli
-- pip install --user aws-sam-cli
+  - pip install --user awscli
+  - pip install --user aws-sam-cli
 matrix:
   include:
   - php: 7.2
   - php: 7.3
   fast_finish: true
 script:
-- composer install --optimize-autoloader
-- composer test
-- composer package
+  - composer install --optimize-autoloader
+  - composer test
+  - composer package
 after_success:
-- wget https://scrutinizer-ci.com/ocular.phar
-- php ocular.phar code-coverage:upload --format=php-clover ./clover.xml
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover ./clover.xml
 deploy:
   provider: script
   script: composer deploy
