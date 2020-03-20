@@ -3,6 +3,7 @@
 namespace Guillermoandrae\Coronavirus\Sources;
 
 use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
+use Guillermoandrae\Coronavirus\Helpers\StringParser;
 
 final class CaliforniaDepartmentOfHealth extends AbstractSource
 {
@@ -21,9 +22,9 @@ final class CaliforniaDepartmentOfHealth extends AbstractSource
         preg_match('/As of (.*) Pacific Daylight Time/', $page, $matches);
         $parts = explode(' ', $matches[1]);
         $month = $parts[0];
-        $day = str_replace(',', '', $parts[1]);
-        $year = str_replace(',', '', $parts[2]);
-        $time = $parts[3] . strtoupper(str_replace('.', '', $parts[4]));
+        $day = StringParser::stripChars($parts[1]);
+        $year = StringParser::stripChars($parts[2]);
+        $time = $parts[3] . StringParser::stripCharsMeridiem($parts[4]);
         $string = sprintf('%d %s %d %s', $day, $month, $year, $time);
         return strtotime($string);
     }

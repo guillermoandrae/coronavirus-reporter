@@ -3,6 +3,7 @@
 namespace Guillermoandrae\Coronavirus\Sources;
 
 use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
+use Guillermoandrae\Coronavirus\Helpers\StringParser;
 
 final class PennsylvaniaDepartmentOfHealth extends AbstractSource
 {
@@ -12,7 +13,7 @@ final class PennsylvaniaDepartmentOfHealth extends AbstractSource
     {
         $page = $this->getData();
         preg_match('/Confirmed Cases(.*)\<\/span\>/', $page, $matches);
-        return (int) str_replace([',', '&#160;', '&nbsp;', '&#58;', ':', '-'], '', trim($matches[1]));
+        return (int) StringParser::stripChars($matches[1]);
     }
 
     public function getLastModified(): int
@@ -20,7 +21,7 @@ final class PennsylvaniaDepartmentOfHealth extends AbstractSource
         $page = $this->getData();
         preg_match('/last updated (.*)\<\/span\>/', $page, $matches);
         $parts = explode(' ', $matches[1]);
-        $time = str_replace('&#58;', ':', $parts[4]) . ' ' . strtoupper(str_replace('.', '', $parts[5]));
+        $time = str_replace('&#58;', ':', $parts[4]) . ' ' . StringParser::stripCharsMeridiem($parts[5]);
         $date = implode(' ', [$parts[0], $parts[1], $parts[2]]);
         $string = sprintf('%s %s', $date, $time);
         return strtotime($string);

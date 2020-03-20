@@ -3,6 +3,7 @@
 namespace Guillermoandrae\Coronavirus\Sources;
 
 use Guillermoandrae\Coronavirus\Contracts\AbstractSource;
+use Guillermoandrae\Coronavirus\Helpers\StringParser;
 
 final class NewYorkDepartmentOfHealth extends AbstractSource
 {
@@ -14,7 +15,7 @@ final class NewYorkDepartmentOfHealth extends AbstractSource
     {
         $page = $this->getData();
         preg_match('/statewide total to (.*) cases/', $page, $matches);
-        return (int) str_replace(',', '', $matches[1]);
+        return (int) StringParser::stripChars($matches[1]);
     }
 
     public function getLastModified(): int
@@ -23,7 +24,7 @@ final class NewYorkDepartmentOfHealth extends AbstractSource
         preg_match('/Last Updated: (.*)\<\/div\>/', $page, $matches);
         $parts = explode(' ', $matches[1]);
         $month = $parts[0];
-        $day = str_replace(',', '', $parts[1]);
+        $day = StringParser::stripChars($parts[1]);
         $year = $parts[2];
         $time = $parts[4];
         $string = sprintf('%d %s %d %s', $day, $month, $year, $time);
