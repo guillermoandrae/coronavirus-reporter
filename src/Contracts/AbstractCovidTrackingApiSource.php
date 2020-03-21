@@ -2,8 +2,6 @@
 
 namespace Guillermoandrae\Coronavirus\Contracts;
 
-use Guillermoandrae\Coronavirus\Helpers\StringParser;
-
 abstract class AbstractCovidTrackingApiSource extends AbstractSource
 {
     /**

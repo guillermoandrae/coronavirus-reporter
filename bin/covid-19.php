@@ -10,7 +10,6 @@ use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
-
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 
