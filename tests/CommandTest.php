@@ -3,15 +3,11 @@
 namespace GuillermoandraeTest\Coronavirus;
 
 use Guillermoandrae\Coronavirus\Command;
+use Guillermoandrae\Coronavirus\Contracts\AbstractCovidTrackingApiSource;
+use Guillermoandrae\Coronavirus\Contracts\AbstractDepartmentOfHealthSource;
 use Guillermoandrae\Coronavirus\SourceAggregator;
-use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
-use PHPUnit\Framework\TestCase;
 
-final class CommandTest extends TestCase
+final class CommandTest extends AbstractOutputTestCase
 {
     /**
      * Tests reporting on all sources.
@@ -34,48 +30,24 @@ final class CommandTest extends TestCase
         $reporter->execute();
         $output = ob_get_clean();
         $this->assertStringContainsString($state, $output);
-        $this->assertStringContainsString($numConfirmedCases, $output);
+        $this->assertStringContainsString(number_format($numConfirmedCases), $output);
         $this->assertStringContainsString($date, $output);
     }
 
-    public function getSources(): array
+    /**
+     * Tests reporting on all sources.
+     *
+     * @param string $className The source class name.
+     * @param string $state The state.
+     * @dataProvider getSources
+     */
+    public function testExecuteWithError(string $className, string $state)
     {
-        return [
-            [
-                GeorgiaDepartmentOfHealth::class,
-                'Georgia',
-                'tests/fixtures/ga.html',
-                '404',
-                'March 17, 2020 at 11:34 AM'
-            ],
-            [
-                NewYorkDepartmentOfHealth::class,
-                'New York',
-                'tests/fixtures/ny.html',
-                '7,180',
-                'March 17, 2020 at 2:03 PM'
-            ],
-            [
-                PennsylvaniaDepartmentOfHealth::class,
-                'Pennsylvania',
-                'tests/fixtures/pa.html',
-                '412',
-                'March 17, 2020 at 12:45 PM'
-            ],
-            [
-                CaliforniaDepartmentOfHealth::class,
-                'California',
-                'tests/fixtures/ca.html',
-                '415',
-                'March 18, 2020 at 6:00 PM'
-            ],
-            [
-                VirginiaCovidTrackingApi::class,
-                'Virginia',
-                'tests/fixtures/va.json',
-                '757',
-                'March 20, 2020 at 5:00 AM'
-            ],
-        ];
+        $source = new $className();
+        $path = 'tests/fixtures/null.';
+        $path .= is_a($source, AbstractCovidTrackingApiSource::class) ? 'json' : 'html';
+        $source->setUrl($path);
+        $this->assertEquals(0, $source->getNumConfirmedCases());
+        $this->assertEquals(time(), $source->getLastModified());
     }
 }
