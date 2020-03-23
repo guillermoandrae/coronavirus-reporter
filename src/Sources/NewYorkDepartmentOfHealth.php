@@ -14,7 +14,7 @@ final class NewYorkDepartmentOfHealth extends AbstractDepartmentOfHealthSource
     public function getNumConfirmedCases(): int
     {
         $page = $this->getData();
-        preg_match('/coronavirus cases is (.*) in/', $page, $matches);
+        preg_match('/total to (.*) confirmed cases/', $page, $matches);
         if (!isset($matches[1])) {
             return 0;
         }
