@@ -13,6 +13,9 @@ final class CaliforniaDepartmentOfHealth extends AbstractDepartmentOfHealthSourc
     {
         $page = $this->getData();
         preg_match('/there are a total of (.*)positive cases/', $page, $matches);
+        if (!isset($matches[1])) {
+            return 0;
+        }
         return (int) str_replace(',', '', $matches[1]);
     }
 
@@ -20,6 +23,9 @@ final class CaliforniaDepartmentOfHealth extends AbstractDepartmentOfHealthSourc
     {
         $page = $this->getData();
         preg_match('/As of (.*) Pacific Daylight Time/', $page, $matches);
+        if (!isset($matches[1])) {
+            return time();
+        }
         $parts = explode(' ', $matches[1]);
         $month = $parts[0];
         $day = StringParser::stripChars($parts[1]);

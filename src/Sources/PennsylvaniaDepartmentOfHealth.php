@@ -13,6 +13,9 @@ final class PennsylvaniaDepartmentOfHealth extends AbstractDepartmentOfHealthSou
     {
         $page = $this->getData();
         preg_match('/Confirmed Cases(.*)\<\/span\>/', $page, $matches);
+        if (!isset($matches[1])) {
+            return 0;
+        }
         return (int) StringParser::stripChars($matches[1]);
     }
 
@@ -20,6 +23,9 @@ final class PennsylvaniaDepartmentOfHealth extends AbstractDepartmentOfHealthSou
     {
         $page = $this->getData();
         preg_match('/last updated (.*)\<\/span\>/', $page, $matches);
+        if (!isset($matches[1])) {
+            return time();
+        }
         $parts = explode(' ', $matches[1]);
         $time = str_replace('&#58;', ':', $parts[4]) . ' ' . StringParser::stripCharsMeridiem($parts[5]);
         $date = implode(' ', [$parts[0], $parts[1], $parts[2]]);

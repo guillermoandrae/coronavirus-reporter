@@ -16,6 +16,9 @@ class GeorgiaDepartmentOfHealth extends AbstractDepartmentOfHealthSource
         $limit = strpos(substr($page, $start), '</tr>');
         $segment = trim(substr($page, $start, $limit));
         preg_match('/\<td\>(.*)\<\/td\>/', $segment, $matches);
+        if (!isset($matches[1])) {
+            return 0;
+        }
         return (int) $matches[1];
     }
 
@@ -23,6 +26,9 @@ class GeorgiaDepartmentOfHealth extends AbstractDepartmentOfHealthSource
     {
         $page = $this->getData();
         preg_match('/\<em\>Report generated on: (.*)\<\/em\>/', $page, $matches);
+        if (!isset($matches[1])) {
+            return time();
+        }
         return strtotime($matches[1]);
     }
 }

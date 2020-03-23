@@ -15,6 +15,9 @@ final class NewYorkDepartmentOfHealth extends AbstractDepartmentOfHealthSource
     {
         $page = $this->getData();
         preg_match('/coronavirus cases is (.*) in/', $page, $matches);
+        if (!isset($matches[1])) {
+            return 0;
+        }
         return (int) StringParser::stripChars($matches[1]);
     }
 
@@ -22,6 +25,9 @@ final class NewYorkDepartmentOfHealth extends AbstractDepartmentOfHealthSource
     {
         $page = $this->getData();
         preg_match('/Last Updated: (.*)\<\/div\>/', $page, $matches);
+        if (!isset($matches[1])) {
+            return time();
+        }
         $parts = explode(' ', $matches[1]);
         $month = $parts[0];
         $day = StringParser::stripChars($parts[1]);
