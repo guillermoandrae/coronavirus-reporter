@@ -4,7 +4,6 @@ namespace GuillermoandraeTest\Coronavirus;
 
 use Guillermoandrae\Coronavirus\Command;
 use Guillermoandrae\Coronavirus\Contracts\AbstractCovidTrackingApiSource;
-use Guillermoandrae\Coronavirus\Contracts\AbstractDepartmentOfHealthSource;
 use Guillermoandrae\Coronavirus\SourceAggregator;
 
 final class CommandTest extends AbstractOutputTestCase
