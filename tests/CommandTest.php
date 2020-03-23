@@ -35,7 +35,7 @@ final class CommandTest extends AbstractOutputTestCase
     }
 
     /**
-     * Tests reporting on all sources.
+     * Tests reporting when errors occur in all sources.
      *
      * @param string $className The source class name.
      * @param string $state The state.
