@@ -26,8 +26,8 @@ final class PennsylvaniaDepartmentOfHealth extends AbstractDepartmentOfHealthSou
         if (!isset($matches[1])) {
             return time();
         }
-        $parts = explode(' ', $matches[1]);
-        $time = str_replace('&#58;', ':', $parts[4]) . ' ' . StringParser::stripCharsMeridiem($parts[5]);
+        $parts = explode(' ', str_replace(['-&nbsp;', '- ', '-&#160;'], '', $matches[1]));
+        $time = $parts[3] . ' ' . StringParser::stripCharsMeridiem($parts[4]);
         $date = implode(' ', [$parts[0], $parts[1], $parts[2]]);
         $string = sprintf('%s %s', $date, $time);
         return strtotime($string);
