@@ -12,11 +12,12 @@ final class PennsylvaniaDepartmentOfHealth extends AbstractDepartmentOfHealthSou
     public function getNumConfirmedCases(): int
     {
         $page = $this->getData();
-        preg_match('/Confirmed Cases(.*)\<\/span\>/', $page, $matches);
+        preg_match('/\<span class=\"ms-rteFontSize-5\"\>(.*)\<\/span\>/', $page, $matches);
         if (!isset($matches[1])) {
             return 0;
         }
-        return (int) StringParser::stripChars($matches[1]);
+        $number = str_replace(['<span style="color: #464646; font-weight: 800;">', '</span>'], '', $matches[1]);
+        return (int) StringParser::stripChars($number);
     }
 
     public function getLastModified(): int

@@ -3,7 +3,7 @@
 namespace GuillermoandraeTest\Coronavirus;
 
 use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\GeorgiaCovidTrackingApi;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
@@ -33,11 +33,11 @@ abstract class AbstractOutputTestCase extends TestCase
     {
         return [
             [
-                GeorgiaDepartmentOfHealth::class,
+                GeorgiaCovidTrackingApi::class,
                 'Georgia',
-                'tests/fixtures/ga.html',
+                'tests/fixtures/ga.json',
                 '404',
-                'March 17, 2020 at 11:34 AM'
+                'March 20, 2020 at 5:00 AM'
             ],
             [
                 NewYorkDepartmentOfHealth::class,

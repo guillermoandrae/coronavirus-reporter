@@ -7,7 +7,7 @@ use Cache\Adapter\Filesystem\FilesystemCachePool;
 use Guillermoandrae\Coronavirus\Api;
 use Guillermoandrae\Coronavirus\SourceAggregator;
 use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\GeorgiaCovidTrackingApi;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
@@ -25,7 +25,7 @@ lambda(function (array $event) {
 
     $aggregator = new SourceAggregator($cacheItemPool);
     $aggregator->addSource(new CaliforniaDepartmentOfHealth());
-    $aggregator->addSource(new GeorgiaDepartmentOfHealth());
+    $aggregator->addSource(new GeorgiaCovidTrackingApi());
     $aggregator->addSource(new NewYorkDepartmentOfHealth());
     $aggregator->addSource(new PennsylvaniaDepartmentOfHealth());
     $aggregator->addSource(new VirginiaCovidTrackingApi());

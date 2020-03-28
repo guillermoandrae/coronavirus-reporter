@@ -6,7 +6,7 @@ use Cache\Adapter\Filesystem\FilesystemCachePool;
 use Guillermoandrae\Coronavirus\Command;
 use Guillermoandrae\Coronavirus\SourceAggregator;
 use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
-use Guillermoandrae\Coronavirus\Sources\GeorgiaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\GeorgiaCovidTrackingApi;
 use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
@@ -20,7 +20,7 @@ $cacheItemPool = new FilesystemCachePool($filesystem);
 $aggregator = new SourceAggregator($cacheItemPool);
 $aggregator->addSource(new NewYorkDepartmentOfHealth());
 $aggregator->addSource(new PennsylvaniaDepartmentOfHealth());
-$aggregator->addSource(new GeorgiaDepartmentOfHealth());
+$aggregator->addSource(new GeorgiaCovidTrackingApi());
 $aggregator->addSource(new CaliforniaDepartmentOfHealth());
 $aggregator->addSource(new VirginiaCovidTrackingApi());
 
