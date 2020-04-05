@@ -8,7 +8,7 @@ use Guillermoandrae\Coronavirus\Api;
 use Guillermoandrae\Coronavirus\SourceAggregator;
 use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaCovidTrackingApi;
-use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\NewYorkCovidTrackingApi;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
@@ -26,7 +26,7 @@ lambda(function (array $event) {
     $aggregator = new SourceAggregator($cacheItemPool);
     $aggregator->addSource(new CaliforniaDepartmentOfHealth());
     $aggregator->addSource(new GeorgiaCovidTrackingApi());
-    $aggregator->addSource(new NewYorkDepartmentOfHealth());
+    $aggregator->addSource(new NewYorkCovidTrackingApi());
     $aggregator->addSource(new PennsylvaniaDepartmentOfHealth());
     $aggregator->addSource(new VirginiaCovidTrackingApi());
 

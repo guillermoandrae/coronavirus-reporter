@@ -7,7 +7,7 @@ use Guillermoandrae\Coronavirus\Command;
 use Guillermoandrae\Coronavirus\SourceAggregator;
 use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaCovidTrackingApi;
-use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\NewYorkCovidTrackingApi;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
 use League\Flysystem\Adapter\Local;
@@ -18,7 +18,7 @@ $filesystem = new Filesystem($filesystemAdapter);
 $cacheItemPool = new FilesystemCachePool($filesystem);
 
 $aggregator = new SourceAggregator($cacheItemPool);
-$aggregator->addSource(new NewYorkDepartmentOfHealth());
+$aggregator->addSource(new NewYorkCovidTrackingApi());
 $aggregator->addSource(new PennsylvaniaDepartmentOfHealth());
 $aggregator->addSource(new GeorgiaCovidTrackingApi());
 $aggregator->addSource(new CaliforniaDepartmentOfHealth());

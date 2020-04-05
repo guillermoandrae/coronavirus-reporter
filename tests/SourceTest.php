@@ -4,7 +4,7 @@ namespace GuillermoandraeTest\Coronavirus;
 
 use Cache\Adapter\Filesystem\FilesystemCachePool;
 use Guillermoandrae\Coronavirus\Contracts\SourceInterface;
-use Guillermoandrae\Coronavirus\Sources\NewYorkDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PHPUnit\Framework\TestCase;
@@ -48,7 +48,7 @@ final class SourceTest extends TestCase
         $filesystem = new Filesystem($filesystemAdapter);
         $this->pool = new FilesystemCachePool($filesystem);
         $this->pool->clear();
-        $this->source = new NewYorkDepartmentOfHealth();
-        $this->source->setUrl('tests/fixtures/ny.html');
+        $this->source = new PennsylvaniaDepartmentOfHealth();
+        $this->source->setUrl('tests/fixtures/pa.html');
     }
 }
