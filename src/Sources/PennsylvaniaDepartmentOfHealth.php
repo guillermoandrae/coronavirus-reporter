@@ -12,7 +12,11 @@ final class PennsylvaniaDepartmentOfHealth extends AbstractDepartmentOfHealthSou
     public function getNumConfirmedCases(): int
     {
         $page = $this->getData();
-        preg_match('/\<span class=\"ms-rteFontSize-5\"\>(.*)\<\/span\>/', $page, $matches);
+        preg_match(
+            '/\"\>(.*)\<\/span\>\<span style=\"font-size: 1\.778rem\; background-color\: initial\;\"\> confirmed COV/',
+            $page,
+            $matches
+        );
         if (!isset($matches[1])) {
             return 0;
         }
