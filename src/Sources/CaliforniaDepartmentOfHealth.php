@@ -12,11 +12,11 @@ final class CaliforniaDepartmentOfHealth extends AbstractDepartmentOfHealthSourc
     public function getNumConfirmedCases(): int
     {
         $page = $this->getData();
-        preg_match('/there are a total of (.*)positive cases/', $page, $matches);
+        preg_match('/there are a total of(.*)positive cases/', $page, $matches);
         if (!isset($matches[1])) {
             return 0;
         }
-        return (int) str_replace(',', '', $matches[1]);
+        return (int) StringParser::stripChars($matches[1]);
     }
 
     public function getLastModified(): int
