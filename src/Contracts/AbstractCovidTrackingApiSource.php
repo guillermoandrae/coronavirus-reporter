@@ -18,7 +18,7 @@ abstract class AbstractCovidTrackingApiSource extends AbstractSource
             preg_match('/\\\Sources\\\(.*)Covid/', $name, $matches);
             $this->setState($matches[1]);
         }
-        $this->setUrl(sprintf('https://covidtracking.com/api/states?state=%s', $this->stateAbbr));
+        $this->setUrl(sprintf('https://covidtracking.com/api/states?state=%s', strtolower($this->stateAbbr)));
     }
 
     public function getNumConfirmedCases(): int
