@@ -2,10 +2,10 @@
 
 namespace GuillermoandraeTest\Coronavirus;
 
-use Guillermoandrae\Coronavirus\Sources\CaliforniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\CaliforniaCovidTrackingApi;
 use Guillermoandrae\Coronavirus\Sources\GeorgiaCovidTrackingApi;
 use Guillermoandrae\Coronavirus\Sources\NewYorkCovidTrackingApi;
-use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\PennsylvaniaCovidTrackingApi;
 use Guillermoandrae\Coronavirus\Sources\VirginiaCovidTrackingApi;
 use PHPUnit\Framework\TestCase;
 
@@ -47,18 +47,18 @@ abstract class AbstractOutputTestCase extends TestCase
                 'March 20, 2020 at 5:00 AM'
             ],
             [
-                PennsylvaniaDepartmentOfHealth::class,
+                PennsylvaniaCovidTrackingApi::class,
                 'Pennsylvania',
-                'tests/fixtures/pa.html',
+                'tests/fixtures/pa.json',
                 '412',
-                'March 17, 2020 at 12:45 PM'
+                'March 20, 2020 at 5:00 AM'
             ],
             [
-                CaliforniaDepartmentOfHealth::class,
+                CaliforniaCovidTrackingApi::class,
                 'California',
-                'tests/fixtures/ca.html',
+                'tests/fixtures/ca.json',
                 '415',
-                'March 18, 2020 at 6:00 PM'
+                'March 20, 2020 at 5:00 AM'
             ],
             [
                 VirginiaCovidTrackingApi::class,

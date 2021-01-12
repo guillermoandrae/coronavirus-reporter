@@ -3,8 +3,9 @@
 namespace GuillermoandraeTest\Coronavirus;
 
 use Cache\Adapter\Filesystem\FilesystemCachePool;
+use Guillermoandrae\Coronavirus\Contracts\AbstractDepartmentOfHealthSource;
 use Guillermoandrae\Coronavirus\Contracts\SourceInterface;
-use Guillermoandrae\Coronavirus\Sources\PennsylvaniaDepartmentOfHealth;
+use Guillermoandrae\Coronavirus\Sources\PennsylvaniaCovidTrackingApi;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PHPUnit\Framework\TestCase;
@@ -25,7 +26,7 @@ final class SourceTest extends TestCase
     /**
      * @var string
      */
-    private $expectedData = 'March';
+    private $expectedData = 'PA';
 
     public function testGetData()
     {
@@ -48,7 +49,7 @@ final class SourceTest extends TestCase
         $filesystem = new Filesystem($filesystemAdapter);
         $this->pool = new FilesystemCachePool($filesystem);
         $this->pool->clear();
-        $this->source = new PennsylvaniaDepartmentOfHealth();
-        $this->source->setUrl('tests/fixtures/pa.html');
+        $this->source = new PennsylvaniaCovidTrackingApi();
+        $this->source->setUrl('tests/fixtures/pa.json');
     }
 }

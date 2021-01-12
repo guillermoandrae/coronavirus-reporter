@@ -4,6 +4,9 @@
 
 This project provides data about the number of confirmed COVID-19 cases in select states.
 
+## A Note About DOH Sites
+Lots has changed since this project first went live. I'm no longer scraping Department of Health websites, because most of them look way different than they originally did and are using more advanced methods of conveying information (like visualizations that can't be easily scraped). 
+
 ## Installation
 Do this, then relax (if you can!!!!!):
 ```
