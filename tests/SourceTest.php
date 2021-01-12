@@ -3,7 +3,6 @@
 namespace GuillermoandraeTest\Coronavirus;
 
 use Cache\Adapter\Filesystem\FilesystemCachePool;
-use Guillermoandrae\Coronavirus\Contracts\AbstractDepartmentOfHealthSource;
 use Guillermoandrae\Coronavirus\Contracts\SourceInterface;
 use Guillermoandrae\Coronavirus\Sources\PennsylvaniaCovidTrackingApi;
 use League\Flysystem\Adapter\Local;
